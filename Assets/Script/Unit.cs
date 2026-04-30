@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     Vector3 targetPosition;
     float stopDistance = 0.1f;
@@ -23,8 +23,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    public void Move(Vector3 Position)
+    public void Move(Vector3 position)
     {
-        targetPosition = Position;
+        targetPosition = position;
     }
 }
