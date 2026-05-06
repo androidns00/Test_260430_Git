@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
 
     void Start()
     {
-        Move(new Vector3(10,0,0));  
+        ///Move(new Vector3(10,0,0));  
     }
 
     // Update is called once per frame
