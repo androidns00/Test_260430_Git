@@ -8,7 +8,11 @@ public class MouseWorld : MonoBehaviour
 
     void Update()
     {
-       
+        if (cube == null || positionProvider == null)
+        {
+            return;
+        }
+
         cube.transform.position = positionProvider.GetMouseWorldPosition(gamePlaneMask);
     }
 }

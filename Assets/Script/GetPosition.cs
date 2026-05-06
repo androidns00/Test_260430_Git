@@ -11,7 +11,8 @@ public class GetPosition : MonoBehaviour
             return Vector3.zero;
         }
 
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
         {
             return hit.point;
