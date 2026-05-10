@@ -12,7 +12,9 @@ public class Unit : MonoBehaviour
     [SerializeField] private float movespeed = 1f;
     [SerializeField] private LayerMask gamePlaneMask;
     [SerializeField] private GetPosition positionProvider;
-
+    [Header ("Animation")]
+    public Animator animator; 
+    
     void Start()
     {
         ///Move(new Vector3(10,0,0));  
@@ -25,7 +27,11 @@ public class Unit : MonoBehaviour
         {
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             transform.position = transform.position + moveDirection * movespeed * Time.deltaTime;
-            
+            animator.SetBool("isWalking",true);
+        }
+        else
+        {
+            animator.SetBool("isWalking",false);
         }
         if(Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
