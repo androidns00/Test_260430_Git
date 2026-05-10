@@ -8,6 +8,8 @@ public class Unit : MonoBehaviour
     
     Vector3 targetPosition;
     float stopDistance = 0.1f;
+    [Header ("旋转和停顿")]
+    [SerializeField] private float rotationSpeed = 0.5f;
     [Header ("Movement")]
     [SerializeField] private float movespeed = 1f;
     [SerializeField] private LayerMask gamePlaneMask;
@@ -27,6 +29,7 @@ public class Unit : MonoBehaviour
         {
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             transform.position = transform.position + moveDirection * movespeed * Time.deltaTime;
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, rotationSpeed * Time.deltaTime );
             animator.SetBool("isWalking",true);
         }
         else
