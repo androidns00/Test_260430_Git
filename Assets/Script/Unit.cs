@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -12,11 +13,17 @@ public class Unit : MonoBehaviour
     [SerializeField] private float rotationSpeed = 0.5f;
     [Header ("Movement")]
     [SerializeField] private float movespeed = 1f;
-    [SerializeField] private LayerMask gamePlaneMask;
-    [SerializeField] private GetPosition positionProvider;
+    public LayerMask gamePlaneMask;
+    public GetPosition positionProvider;
     [Header ("Animation")]
     public Animator animator; 
     
+    private void Awake()
+    {
+        targetPosition = transform.position;
+    }  
+
+
     void Start()
     {
         ///Move(new Vector3(10,0,0));  
@@ -36,11 +43,7 @@ public class Unit : MonoBehaviour
         {
             animator.SetBool("isWalking",false);
         }
-        if(Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector3 mouseWorldPosition = positionProvider.GetMouseWorldPosition(gamePlaneMask);
-            Move(mouseWorldPosition);
-        }
+        
     }
 
     public void Move(Vector3 position)
