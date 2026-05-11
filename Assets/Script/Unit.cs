@@ -13,8 +13,8 @@ public class Unit : MonoBehaviour
     [SerializeField] private float rotationSpeed = 0.5f;
     [Header ("Movement")]
     [SerializeField] private float movespeed = 1f;
-    public LayerMask gamePlaneMask;
-    public GetPosition positionProvider;
+    [SerializeField] private LayerMask gamePlaneMask;
+    [SerializeField] private GetPosition positionProvider;
     [Header ("Animation")]
     public Animator animator; 
     

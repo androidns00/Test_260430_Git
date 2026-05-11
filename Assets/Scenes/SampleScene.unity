@@ -365,7 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ff7ad938ae70e459cfb0c6bc3b8d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  selectedUnit: {fileID: 475353511}
+  gamePlaneMask:
+    serializedVersion: 2
+    m_Bits: 64
+  positionProvider: {fileID: 39017557}
 --- !u!4 &253522683
 Transform:
   m_ObjectHideFlags: 0
@@ -381,17 +384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &475353511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3410031274032998319, guid: 1bef1f0d1c219a14eb48afb6953fce9c, type: 3}
-  m_PrefabInstance: {fileID: 8885151043293571049}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b6c73daf6ee4148acd85e4df3ee994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
 --- !u!1 &551679634
 GameObject:
   m_ObjectHideFlags: 0

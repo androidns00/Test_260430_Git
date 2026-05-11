@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class UnitActionSystem : MonoBehaviour
 {
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Unit selectedUnit;
+    [SerializeField] private LayerMask gamePlaneMask;
+    [SerializeField] private GetPosition positionProvider;
+
+    private Unit selectedUnit;
     void Start()
     {
         
@@ -15,8 +16,26 @@ public class UnitActionSystem : MonoBehaviour
     {
         if(Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector3 mouseWorldPosition = selectedUnit.positionProvider.GetMouseWorldPosition(selectedUnit.gamePlaneMask);
-            selectedUnit.Move(mouseWorldPosition);
+            if(TryhandUnitSelection()) return;
+            if (selectedUnit == null) return;  
+            selectedUnit.Move(positionProvider.GetMouseWorldPosition(gamePlaneMask));
         }
+    }
+    private bool TryhandUnitSelection()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if(Physics.Raycast(ray,out RaycastHit hit,Mathf.Infinity,LayerMask.GetMask("Unit")))   
+        {
+            selectedUnit = hit.transform.GetComponent<Unit>();
+            if(selectedUnit)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
     }
 }
